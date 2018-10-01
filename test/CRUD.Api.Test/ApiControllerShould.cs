@@ -22,11 +22,11 @@
 
     using Xunit;
 
-    public class UnitTest1 : EndToEndTest
+    public class ApiControllerShould : EndToEndTest
     {
         private IADWContext dbContext;
 
-        public UnitTest1(WebApplicationFactory<Startup> factory)
+        public ApiControllerShould(WebApplicationFactory<Startup> factory)
             : base(factory)
         {
             Startup.RegisterDbContext = services =>
@@ -39,7 +39,7 @@
         }
 
         [Fact]
-        public async Task Test1()
+        public async Task ReturnLocationsWhenCallGet()
         {
             var response = await this.Client.Value.GetAsync("/api/locations");
 
